@@ -26,8 +26,11 @@ A Flask-based web application for content-based image retrieval using CLIP embed
 - PyTorch (Deep Learning Framework)
 
 
-Try the live demo on Hugging Face Spaces:
-💕 [**512 Gallery on Hugging Face**](https://huggingface.co/spaces/kaniskaZoro/512Gallery) - (Cosine version is hosted on hugginng face)
+Try the live demo on Hugging Face Spaces
+(Cosine version is hosted on hugginng face)
+
+
+💕 [**512 Gallery on Hugging Face**](https://huggingface.co/spaces/kaniskaZoro/512Gallery)  (Cosine version is hosted on hugginng face)
 
 
 <img width="1410" height="244" alt="image" src="https://github.com/user-attachments/assets/281cbdb7-88c7-4213-b129-2f8c0dd20d79" />
