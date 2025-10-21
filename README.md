@@ -24,3 +24,11 @@ A Flask-based web application for content-based image retrieval using CLIP embed
 - Pinecone (Vector Database)
 - ImgBB (Image Hosting)
 - PyTorch (Deep Learning Framework)
+
+
+Try the live demo on Hugging Face Spaces:
+💕 [**512 Gallery on Hugging Face**](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
+
+
+<img width="1410" height="244" alt="image" src="https://github.com/user-attachments/assets/281cbdb7-88c7-4213-b129-2f8c0dd20d79" />
+
