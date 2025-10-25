@@ -15,7 +15,7 @@ app.config['UPLOAD_FOLDER'] = 'images'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'}
 
-
+# because running this on CPU is a great way to test patience
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
 processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
@@ -32,7 +32,6 @@ def get_image_embedding(img_path):
     inputs = processor(images=img, return_tensors="pt").to(device)
     with torch.no_grad():
         emb = model.get_image_features(**inputs)
-
     emb = emb / emb.norm(dim=-1, keepdim=True)
     return emb[0].cpu().numpy().astype("float32")
 
@@ -45,7 +44,7 @@ def rebuild_index():
         os.makedirs(app.config['UPLOAD_FOLDER'])
         return None, []
     
-    print(f"\n Rebuilding index from {app.config['UPLOAD_FOLDER']}...")
+    print(f"\n Rebuilding index from {app.config['UPLOAD_FOLDER']}...")  # hope you didn’t have weekend plans
     
     for img_file in os.listdir(app.config['UPLOAD_FOLDER']):
         if allowed_file(img_file):
@@ -63,21 +62,17 @@ def rebuild_index():
         return None, []
     
     embeddings = np.stack(embeddings).astype("float32")
-    
-
     faiss.normalize_L2(embeddings)
     
     dimension = embeddings.shape[1]
     index = faiss.IndexFlatIP(dimension)
     index.add(embeddings)
     
-
     faiss.write_index(index, index_file)
     with open(paths_file, "w") as f:
         json.dump(image_paths, f)
     
     print(f" Index built with {len(image_paths)} images\n")
-    
     return index, image_paths
 
 def load_or_create_index():
@@ -89,7 +84,6 @@ def load_or_create_index():
         return index, image_paths
     else:
         return rebuild_index()
-
 
 index, image_paths = load_or_create_index()
 
@@ -105,14 +99,12 @@ def upload_image():
         return jsonify({'error': 'No file provided'}), 400
     
     file = request.files['file']
-    
     if file.filename == '':
         return jsonify({'error': 'No file selected'}), 400
     
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         
-
         base, ext = os.path.splitext(filename)
         counter = 1
         while os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], filename)):
@@ -121,7 +113,6 @@ def upload_image():
         
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
-        
 
         index, image_paths = rebuild_index()
         
@@ -147,30 +138,22 @@ def search():
     print(f"\n Searching for: '{query_text}'")
     print(f" Total images in index: {len(image_paths)}")
     
-
     inputs = processor(text=[query_text], return_tensors="pt", padding=True).to(device)
     with torch.no_grad():
         query_embedding = model.get_text_features(**inputs)
-
         query_embedding = query_embedding / query_embedding.norm(dim=-1, keepdim=True)
         query_embedding = query_embedding.cpu().numpy().astype("float32")
     
-
     faiss.normalize_L2(query_embedding)
-    
-
     k = min(1, len(image_paths))
     scores, indices = index.search(query_embedding, k=k)
     
-    print(f" Best match: {image_paths[indices[0][0]]} (score: {scores[0][0]:.4f})")
+    print(f" Best match: {image_paths[indices[0][0]]} (score: {scores[0][0]:.4f})")  # totally accurate, trust me
     
     results = []
     for rank, idx in enumerate(indices[0]):
         img_path = image_paths[idx]
-        
-
         with Image.open(img_path) as img:
-
             img.thumbnail((800, 800), Image.Resampling.LANCZOS)
             buffered = BytesIO()
             img.save(buffered, format="PNG")
@@ -195,4 +178,4 @@ def stats():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)  # because production servers are for the weak
