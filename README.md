@@ -1,36 +1,26 @@
-
 # Content-Based Image Retrieval System
 
-A Flask-based web application for content-based image retrieval using CLIP embeddings and Pinecone vector search.
+A small web app that finds similar images from text. It uses CLIP under the hood — basically, it looks at images and words like it actually knows what they mean.
 
-## Features
+## What it does
 
--  Upload images to the database
--  Search for similar images using text queries
--  Powered by OpenAI's CLIP model
--  Vector storage with Pinecone
--  Image hosting via ImgBB
+- Upload your images (so the model has something to pretend to understand).  
+- Search using text (type "a cat on a chair" and pray it doesn’t give you a toaster).  
+- Uses OpenAI’s CLIP model because it’s smart enough and free enough.  
+- Stores image features in Pinecone so you don’t cry searching through arrays.  
+- Images are hosted on ImgBB because who’s paying for S3, right?
 
-## Usage
+## How it runs
 
-1. **Upload Images**: Click "Upload Image" to add images to the database
-2. **Search**: Enter a text description to find similar images
-3. **View Results**: See the most similar image with similarity score
+It’s built with **Flask**, some **PyTorch**, and **CLIP** — basically Python, AI, and a lot of pretending things will work on the first try.  
+The backend builds a FAISS index from your images, and the frontend just shows you what it *thinks* is similar.
 
-## Technology Stack
+---
 
-- Flask (Web Framework)
-- CLIP (OpenAI's Vision-Language Model)
-- Pinecone (Vector Database)
-- ImgBB (Image Hosting)
-- PyTorch (Deep Learning Framework)
+Try it on Hugging Face Spaces (the “cosine” version is hosted there).  
 
+🙂 [**512 Gallery on Hugging Face**](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
 
-Try the live demo on Hugging Face Spaces
-(Cosine version is hosted on hugginng face)
-
-
-💕 [**512 Gallery on Hugging Face**](https://huggingface.co/spaces/kaniskaZoro/512Gallery)  (Cosine version is hosted on hugginng face)
 
 
 <img width="1410" height="244" alt="image" src="https://github.com/user-attachments/assets/281cbdb7-88c7-4213-b129-2f8c0dd20d79" />
