@@ -1,4 +1,3 @@
-
 const uploadArea = document.getElementById('upload-area');
 const fileInput = document.getElementById('file-input');
 const uploadStatus = document.getElementById('upload-status');
@@ -9,21 +8,17 @@ const resultsSection = document.getElementById('results-section');
 const resultsContainer = document.getElementById('results-container');
 const imageCount = document.getElementById('image-count');
 
-
 updateStats();
-
 
 uploadArea.addEventListener('click', () => {
     fileInput.click();
 });
-
 
 fileInput.addEventListener('change', (e) => {
     if (e.target.files.length > 0) {
         uploadFile(e.target.files[0]);
     }
 });
-
 
 uploadArea.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -43,18 +38,15 @@ uploadArea.addEventListener('drop', (e) => {
     }
 });
 
-
 searchBtn.addEventListener('click', () => {
     performSearch();
 });
-
 
 searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         performSearch();
     }
 });
-
 
 async function uploadFile(file) {
     const formData = new FormData();
@@ -63,6 +55,7 @@ async function uploadFile(file) {
     showStatus(uploadStatus, 'info', 'Uploading and indexing image...');
     
     try {
+        // Because the network *never* fails, right?
         const response = await fetch('/upload', {
             method: 'POST',
             body: formData
@@ -82,11 +75,11 @@ async function uploadFile(file) {
     }
 }
 
-
 async function performSearch() {
     const query = searchInput.value.trim();
     
     if (!query) {
+        // Because searching with an empty box is apparently a thing.
         showStatus(searchStatus, 'error', 'Please enter a search query');
         return;
     }
@@ -108,6 +101,7 @@ async function performSearch() {
         const data = await response.json();
         
         if (response.ok) {
+            // Look at that it actually worked.
             displayResults(data.results);
             showStatus(searchStatus, 'success', `Found ${data.results.length} result(s)`);
         } else {
@@ -127,11 +121,11 @@ async function performSearch() {
     }
 }
 
-
 function displayResults(results) {
     resultsContainer.innerHTML = '';
     
     if (results.length === 0) {
+        // Ah yes, your query was *too* good. No matches.
         resultsContainer.innerHTML = '<p style="color: var(--text-secondary);">No results found</p>';
         resultsSection.style.display = 'block';
         return;
@@ -168,7 +162,6 @@ function displayResults(results) {
     resultsSection.style.display = 'block';
 }
 
-
 function showStatus(element, type, message) {
     element.className = `status-message show ${type}`;
     element.textContent = message;
@@ -178,13 +171,14 @@ function showStatus(element, type, message) {
     }, 5000);
 }
 
-
 async function updateStats() {
     try {
         const response = await fetch('/stats');
         const data = await response.json();
+        // Because we totally trust the backend to always return correct stats.
         imageCount.textContent = `${data.total_images} images indexed (${data.method})`;
     } catch (error) {
+        // Shocking something went wrong.
         console.error('Failed to update stats:', error);
     }
 }
