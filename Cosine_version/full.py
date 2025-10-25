@@ -1,5 +1,3 @@
-
-
 from transformers import CLIPProcessor, CLIPModel
 from PIL import Image
 import torch
@@ -9,9 +7,7 @@ import os
 import json
 import matplotlib.pyplot as plt
 
-
-
-
+# pick your poison: GPU or the painfully slow CPU
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
 processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
@@ -20,21 +16,15 @@ image_folder = "images/"
 index_file = "faiss_index.bin"
 paths_file = "image_paths.json"
 
-
-
-
+# if it already exists, why do extra work?
 if os.path.exists(index_file) and os.path.exists(paths_file):
-
     index = faiss.read_index(index_file)
     print(f"Loaded FAISS index with {index.ntotal} vectors ")
-
 
     with open(paths_file, "r") as f:
         image_paths = json.load(f)
 else:
-
-
-
+    # great, time to rebuild everything because someone deleted the files
     print("Index not found, building index from images...")
     embeddings = []
     image_paths = []
@@ -52,21 +42,17 @@ else:
 
     embeddings = np.stack(embeddings).astype("float32")
 
-
     dimension = embeddings.shape[1]
     index = faiss.IndexFlatL2(dimension)
     index.add(embeddings)
     print(f"Indexed {index.ntotal} images ")
-
 
     faiss.write_index(index, index_file)
     with open(paths_file, "w") as f:
         json.dump(image_paths, f)
     print("FAISS index and paths saved to disk ")
 
-
-
-
+# interactive loop, because GUIs are overrated
 while True:
     query_text = input("\nEnter search text (or 'exit' to quit): ")
     if query_text.lower() == "exit":
@@ -82,7 +68,6 @@ while True:
     print("\nTop matches:")
     for rank, idx in enumerate(indices[0]):
         print(f"{rank+1}: {image_paths[idx]} (Distance: {distances[0][rank]:.4f})")
-
 
     for idx in indices[0]:
         img = Image.open(image_paths[idx])
