@@ -52,6 +52,7 @@ def rebuild_index():
         return None, []
     
     print(f"\nRebuilding index from {app.config['UPLOAD_FOLDER']}...")
+    # Because clearly, rebuilding the entire index every time is the definition of efficiency.
     
     for img_file in os.listdir(app.config['UPLOAD_FOLDER']):
         if allowed_file(img_file):
@@ -75,6 +76,7 @@ def rebuild_index():
     index = faiss.IndexFlatL2(dimension)
     index.add(embeddings)
     
+    # L2 distance — because normalization is overrated and chaos is more fun.
 
     faiss.write_index(index, index_file)
     with open(paths_file, "w") as f:
@@ -151,6 +153,7 @@ def search():
     
     print(f"\n Searching for: '{query_text}'")
     print(f" Total images in index: {len(image_paths)}")
+    # Time to make CLIP guess what we meant — not what we said.
     
 
     inputs = processor(text=[query_text], return_tensors="pt", padding=True).to(device)
