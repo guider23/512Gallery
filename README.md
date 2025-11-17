@@ -1,3 +1,4 @@
+> Now available for android - Limited 
 # Content-Based Image Retrieval System
 
 A small web app that finds similar images from text. It uses CLIP under the hood — basically, it looks at images and words like it actually knows what they mean.
@@ -19,9 +20,14 @@ The backend builds a FAISS index from your images, and the frontend just shows y
 
 Try it on Hugging Face Spaces (the “cosine” version is hosted there).  
 
+<img width="1410" height="244" alt="image" src="https://github.com/user-attachments/assets/281cbdb7-88c7-4213-b129-2f8c0dd20d79" />
+
+
 🙂 [**512 Gallery on Hugging Face**](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
 
 
 
-<img width="1410" height="244" alt="image" src="https://github.com/user-attachments/assets/281cbdb7-88c7-4213-b129-2f8c0dd20d79" />
 
+![download (15)](https://github.com/user-attachments/assets/79ef0ed6-089d-4f1c-86e4-b9cdec3d3542)
+
+🎀 [**512 Gallery App**](https://bcworks.in.net/512gallery)
