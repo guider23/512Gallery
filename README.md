@@ -9,7 +9,7 @@ A small web app that finds similar images from text. It uses CLIP under the hood
 - Search using text (type "a cat on a chair" and pray it doesn’t give you a toaster).  
 - Uses OpenAI’s CLIP model because it’s smart enough and free enough.  
 - Stores image features in Pinecone so you don’t cry searching through arrays.  
-- Images are hosted on ImgBB because who’s paying for S3, right?
+- Images are hosted on ImgBB because who’s paying for AWS S3, right?
 
 ## How it runs
 
