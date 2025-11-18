@@ -1,33 +1,32 @@
-> Now available for android - Limited 
-# Content-Based Image Retrieval System
+# 512 Gallery: Find Your Pics the Easy Way
 
-A small web app that finds similar images from text. It uses CLIP under the hood — basically, it looks at images and words like it actually knows what they mean.
+Tired of digging through photos like it's 1999? 512 Gallery lets you type what you want, like "that beach sunset from last summer," and pulls up the matches. Powered by AI that actually gets it. No more frustration, just results.
 
-## What it does
+## What Makes It Tick
 
-- Upload your images (so the model has something to pretend to understand).  
-- Search using text (type "a cat on a chair" and pray it doesn’t give you a toaster).  
-- Uses OpenAI’s CLIP model because it’s smart enough and free enough.  
-- Stores image features in Pinecone so you don’t cry searching through arrays.  
-- Images are hosted on ImgBB because who’s paying for AWS S3, right?
+- Quick uploads: Drop in pics, done.
+- Smart searches: Natural words work, no keywords needed.
+- CLIP brains: Matches text to images like magic.
+- Fast finds: Pinecone keeps it speedy.
 
-## How it runs
+Great for photographers, designers, or anyone with too many pics.
 
-It’s built with **Flask**, some **PyTorch**, and **CLIP** — basically Python, AI, and a lot of pretending things will work on the first try.  
-The backend builds a FAISS index from your images, and the frontend just shows you what it *thinks* is similar.
+## The Tech Bit
 
----
+Flask runs the show, PyTorch and CLIP crunch features, Pinecone searches quick. Clean frontend, open source to tweak.
 
-Try it on Hugging Face Spaces (the “cosine” version is hosted there).  
+## Try It Out
 
-<img width="1410" height="244" alt="image" src="https://github.com/user-attachments/assets/281cbdb7-88c7-4213-b129-2f8c0dd20d79" />
+See it live and grab the app.
 
+![App screenshot](https://github.com/user-attachments/assets/281cbdb7-88c7-4213-b129-2f8c0dd20d79)
 
-🙂 [**512 Gallery on Hugging Face**](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
+[Launch on Hugging Face](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
 
+![Download view](https://github.com/user-attachments/assets/79ef0ed6-089d-4f1c-86e4-b9cdec3d3542)
 
+[Get the App](https://bcworks.in.net/512gallery)
 
+Now on Android, limited release.
 
-![download (15)](https://github.com/user-attachments/assets/79ef0ed6-089d-4f1c-86e4-b9cdec3d3542)
-
-🎀 [**512 Gallery App**](https://bcworks.in.net/512gallery)
+Give it a go. You will like it.
