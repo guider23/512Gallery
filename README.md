@@ -1,4 +1,5 @@
 # 512 Gallery: Find Your Pics the Easy Way
+> Back End Server is down, If you want to try try hugging face version, If you also want to give a try raise a issue or contact asap I will try on the dynoa :)
 
 Tired of digging through photos like it's 1999? 512 Gallery lets you type what you want, like "that beach sunset from last summer," and pulls up the matches. Powered by AI that actually gets it. No more frustration, just results.
 
