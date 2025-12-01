@@ -25,7 +25,7 @@ See it live and grab the app.
 
 ![Download view](https://github.com/user-attachments/assets/79ef0ed6-089d-4f1c-86e4-b9cdec3d3542)
 
-[Get the App](https://bcworks.in.net/512gallery)
+[Get the App (Android 8+)](https://bcworks.in.net/512gallery)
 
 Now on Android, limited release.
 
