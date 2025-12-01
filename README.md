@@ -1,5 +1,7 @@
 # 512 Gallery: Find Your Pics the Easy Way
-> Back End Server is down, If you want to try try hugging face version, If you also want to give a try raise a issue or contact asap I will try on the dynoa :)
+
+> The back-end server is currently down. If you’d like to try it out, you can use the Hugging Face version. If you want access the app or have any issues, feel free to open an issue or contact me — I’ll restart the dyno as soon as possible.
+
 
 Tired of digging through photos like it's 1999? 512 Gallery lets you type what you want, like "that beach sunset from last summer," and pulls up the matches. Powered by AI that actually gets it. No more frustration, just results.
 
