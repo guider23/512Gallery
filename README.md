@@ -26,7 +26,7 @@ See it live and grab the app.
 [Launch on Hugging Face](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
 
 
-[Get the App (Android 8+) 🎉💫 ](https://bcworks.in.net/512gallery)
+[Get the App (Android 8+) ](https://bcworks.in.net/512gallery)  🎉💫
 
 Now on Android, limited release.
 
