@@ -1,5 +1,7 @@
 # 512 Gallery: Find Your Pics the Easy Way
 
+
+
 > The back-end server is currently down. If you’d like to try it out, you can use the Hugging Face version. If you want access the app or have any issues, feel free to open an issue or contact me — I’ll restart the dyno as soon as possible.
 
 
@@ -22,11 +24,11 @@ Flask runs the show, PyTorch and CLIP crunch features, Pinecone searches quick. 
 
 See it live and grab the app.
 
+[![Launch on Hugging Face](https://img.shields.io/badge/Launch%20on-Hugging%20Face-blueviolet?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
 
-[Launch on Hugging Face](https://huggingface.co/spaces/kaniskaZoro/512Gallery)
+[![Get the App](https://img.shields.io/badge/Get%20the%20App-Android%208%2B-brightgreen?style=for-the-badge&logo=android&logoColor=white)](https://bcworks.in.net/512gallery)
 
 
-[Get the App (Android 8+) ](https://bcworks.in.net/512gallery)  🎉💫
 
 Now on Android, limited release.
 
