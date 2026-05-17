@@ -28,7 +28,13 @@ See it live and grab the app.
 
 [![Get the App](https://img.shields.io/badge/Get%20the%20App-Android%208%2B-brightgreen?style=for-the-badge&logo=android&logoColor=white)](https://bcworks.in.net/512gallery)
 
+
+Now on Android, limited release.
+
+Give it a go. You will like it.
+
 ## Contribution 
+
 We love your hands to get dirty on this project
 
 <p align="center">
@@ -36,6 +42,3 @@ We love your hands to get dirty on this project
 </p>
 
 
-Now on Android, limited release.
-
-Give it a go. You will like it.
